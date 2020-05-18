@@ -1,4 +1,4 @@
-"# clojurian
+# clojurian
 ## Index 
 - [Intro](#Intro)
 - [Dependencies](#Dependencies)
