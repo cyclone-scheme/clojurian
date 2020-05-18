@@ -33,7 +33,7 @@ None
 Inserts val as the first argument of each (proc args ...) clause (i.e. right after proc). Returns val. This is useful e.g. for mutating a record on initialization.
 
 Example:
-```
+```scheme
 (define boolean-vector
   (doto (make-vector 100)
         (vector-fill! #t 0 50)
@@ -52,7 +52,7 @@ Example:
 Inserts val as the first argument of the first (proc args ...) clause. The resulting form is then inserted as the first argument of the following proc form and so on. This is known as the thrush combinator. 
 
 Single value example:
-```
+```scheme
 (-> 10 (- 2) (/ 5) (* 3))
 
 =>
@@ -66,7 +66,7 @@ The starred version (->*) is multi value aware, i.e. each form's return values a
 
 Multi value example:
 
-```
+```scheme
 (->* (values 1 2) (list))
 
 =>
@@ -79,7 +79,7 @@ Multi value example:
 Works just like -> and ->* only that the forms are inserted at the end of each successive clause's argument list.
 
 Example:
-```
+```scheme
 (->> (iota 10)
      (map add1)
      (fold + 0)
@@ -93,17 +93,16 @@ Example:
    (iota 10))))
 ```
 
-#### as->
-`(as-> val name forms ...)`
+#### `(as-> val name forms ...)`
 
 Evaluates forms in order in a scope where name is bound to val for the first form, the result of that for the second form, the result of that for the third form, and so forth. Returns the result of the last form.
 
 Examples:
-```
+```scheme
 (as-> 3 x (+ x 7) (/ x 2)) => 5
 ```
 It's mainly useful in combination with ->:
-```
+```scheme
 (-> 10 (+ 3) (+ 7) (as-> x (/ 200 x))) => 10
 ```
 
@@ -112,7 +111,7 @@ It's mainly useful in combination with ->:
 Works just like -> but will return #f in case val or any of the forms evaluates to #f.
 
 Examples:
-```
+```scheme
 (define some-alist '((a . 1) (b . 2)))
 
 (and-> 'b (assq some-alist) cdr add1) => 3
@@ -122,7 +121,7 @@ Examples:
 
 This syntax is essentially a shortcut for certain uses of and-let*, e.g. the above example would often be expressed like this:
 
-```
+```scheme
 (and-let* ((x 'b)
            (x (assq x some-alist))
            (x (cdr x)))
@@ -131,11 +130,11 @@ This syntax is essentially a shortcut for certain uses of and-let*, e.g. the abo
 
 #### `(if-let (var val) then else)`
 
-Equivalent to (let ((var val)) (if var then else)).
+Equivalent to `(let ((var val)) (if var then else))`.
 
 #### `(if-let* ((x1 y1) (x2 y2) ...) then else)` 
 
-Similar to (or (and-let* ((x1 y1) (x2 y2) ...) then) else) except that returning #f from the then clause will not lead to the else clause being evaluated.
+Similar to `(or (and-let* ((x1 y1) (x2 y2) ...) then) else)` except that returning #f from the then clause will not lead to the else clause being evaluated.
 
 *Attention*: the original Clojurian egg for CHICKEN Scheme provides `atom` and other definitions wich are implemented in Cyclone by the `(cyclone concurrent)` library (see [here](http://justinethier.github.io/cyclone/docs/api/cyclone/concurrent)).
 
