@@ -1,0 +1,16 @@
+(package
+ (name clojurian)
+ (version 0.1)
+ (license "BSD")
+ (authors "Moritz Heidkamp <http://wiki.call-cc.org/users/moritz-heidkamp>")
+ (maintainers "Arthur Maciel <arthurmaciel at gmail dot com>")
+ (description "A collection of modules providing syntax and utility functions inspired by [Clojure](https://clojure.com).")
+ (tags "lang extensions")
+ (docs "https://github.com/cyclone-scheme/cyclone-winds/wiki/clojurian")
+ (test "test.scm")
+ (dependencies ())
+ (test-dependencies ())
+ (foreign-dependencies ())
+ (library
+     (name (cyclone clojurian))
+   (description "A collection of modules providing syntax and utility functions inspired by [Clojure](https://clojure.com).")))
