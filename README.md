@@ -28,8 +28,8 @@ None
 
 ### (cyclone clojurian)
 
-#### doto
-`(doto val (proc args ...) ...)` 
+#### `(doto val (proc args ...) ...)` 
+
 Inserts val as the first argument of each (proc args ...) clause (i.e. right after proc). Returns val. This is useful e.g. for mutating a record on initialization.
 
 Example:
@@ -47,8 +47,8 @@ Example:
     vec))
 ```
 
-#### ->
-`(-> val (proc args ...) ...)`
+#### `(-> val (proc args ...) ...)`
+
 Inserts val as the first argument of the first (proc args ...) clause. The resulting form is then inserted as the first argument of the following proc form and so on. This is known as the thrush combinator. 
 
 Single value example:
@@ -60,8 +60,8 @@ Single value example:
 (* (/ (- 10 2) 5) 3)
 ```
 
-#### ->*
-`(->* val (proc args ...) ...)`
+#### `(->* val (proc args ...) ...)`
+
 The starred version (->*) is multi value aware, i.e. each form's return values are spliced into the argument list of the successing form. As a shorthand it is also possible to pass proc instead of (proc).
 
 Multi value example:
@@ -74,9 +74,7 @@ Multi value example:
 (receive args (values 1 2) (apply list args))
 ```
 
-#### ->> and ->>*
-`(->> val (proc args ...) ...)`
-`(->>* val (proc args ...) ...)`
+#### `(->> val (proc args ...) ...)` and `(->>* val (proc args ...) ...)`
 
 Works just like -> and ->* only that the forms are inserted at the end of each successive clause's argument list.
 
@@ -109,8 +107,7 @@ It's mainly useful in combination with ->:
 (-> 10 (+ 3) (+ 7) (as-> x (/ 200 x))) => 10
 ```
 
-#### and->
-`(and-> val forms ...)`
+#### `(and-> val forms ...)`
 
 Works just like -> but will return #f in case val or any of the forms evaluates to #f.
 
@@ -132,12 +129,11 @@ This syntax is essentially a shortcut for certain uses of and-let*, e.g. the abo
   (add1 x))
 ```
 
-#### if-let
-`(if-let (var val) then else)`
+#### `(if-let (var val) then else)`
+
 Equivalent to (let ((var val)) (if var then else)).
 
-#### if-let*
-`(if-let* ((x1 y1) (x2 y2) ...) then else)` 
+#### `(if-let* ((x1 y1) (x2 y2) ...) then else)` 
 
 Similar to (or (and-let* ((x1 y1) (x2 y2) ...) then) else) except that returning #f from the then clause will not lead to the else clause being evaluated.
 
