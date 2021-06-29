@@ -145,7 +145,7 @@ Similar to `(or (and-let* ((x1 y1) (x2 y2) ...) then) else)` except that returni
 Arthur Maciel <arthurmaciel at gmail dot com>
 
 ## Version 
-0.1
+"0.1.0"
 
 ## License 
 BSD

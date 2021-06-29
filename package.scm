@@ -1,6 +1,6 @@
 (package
  (name clojurian)
- (version 0.1)
+ (version "0.1.0")
  (license "BSD")
  (authors "Moritz Heidkamp <http://wiki.call-cc.org/users/moritz-heidkamp>")
  (maintainers "Arthur Maciel <arthurmaciel at gmail dot com>")
